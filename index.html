@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic homepage of Mario Qosja — Researcher in embedded systems, formal methods, and AI.">
+  <title>Mario Qosja | Researcher</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #555;
+      --accent: #1F3A5F;
+      --accent-dark: #162d4a;
+      --rule: #B8C2CC;
+      --bg: #ffffff;
+      --bg-soft: #f7f8fa;
+      --max: 860px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .photo {
+      flex: 0 0 130px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--rule);
+      background: var(--bg-soft);
+    }
+
+    .id h1 {
+      font-size: 2.1rem;
+      font-weight: normal;
+      letter-spacing: 0.01em;
+      margin-bottom: 4px;
+    }
+
+    .id .title {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .id .affiliation {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .id .affiliation a { color: var(--accent); }
+
+    /* Nav */
+    nav {
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 22px;
+      padding: 10px 24px;
+    }
+
+    nav a {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.88rem;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Main */
+    main { padding: 40px 0 56px; }
+
+    section { margin-bottom: 48px; }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: normal;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+    }
+
+    p { margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* Research interests */
+    ul.interests {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    ul.interests li {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 5px 16px;
+      color: var(--ink);
+    }
+
+    /* Publications */
+    ol.publications {
+      list-style: none;
+      counter-reset: pub;
+    }
+
+    ol.publications li {
+      counter-increment: pub;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    ol.publications li:last-child { border-bottom: none; }
+
+    ol.publications li::before {
+      content: "[" counter(pub) "]";
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-right: 10px;
+    }
+
+    .pub .authors strong { font-weight: bold; }
+    .pub .paper-title { font-style: italic; }
+
+    .pub .venue {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      padding: 0 6px;
+      margin-left: 8px;
+      vertical-align: 2px;
+    }
+
+    /* Teaching */
+    table.courses {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.97rem;
+    }
+
+    table.courses th {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: left;
+      color: var(--muted);
+      border-bottom: 2px solid var(--rule);
+      padding: 8px 12px 8px 0;
+    }
+
+    table.courses td {
+      padding: 12px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+
+    table.courses tr:last-child td { border-bottom: none; }
+    table.courses td.year {
+      white-space: nowrap;
+      width: 140px;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    /* CV */
+    .cv-link {
+      display: inline-block;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.92rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 26px;
+      border-radius: 5px;
+      transition: background 0.15s ease;
+    }
+
+    .cv-link:hover {
+      background: var(--accent-dark);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Contact */
+    .contact-list { list-style: none; }
+
+    .contact-list li {
+      padding: 6px 0;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.97rem;
+    }
+
+    .contact-list .label {
+      display: inline-block;
+      width: 130px;
+      color: var(--muted);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 6px 16px;
+      font-size: 0.95rem;
+    }
+
+    .skills-grid dt {
+      font-weight: bold;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.88rem;
+      color: var(--accent);
+    }
+
+    .skills-grid dd {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.92rem;
+    }
+
+    /* Education */
+    .edu-entry {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .edu-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .edu-entry .edu-title { font-weight: bold; }
+    .edu-entry .edu-meta {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 24px 0 36px;
+      text-align: center;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 560px) {
+      .header-inner { flex-direction: column; text-align: center; gap: 18px; }
+      .id .affiliation { display: flex; flex-direction: column; gap: 2px; }
+      nav .container { justify-content: center; }
+      table.courses td.year { width: auto; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .skills-grid dt { margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <img class="photo" alt="Mario Qosja"
+        src="img/photo.jpg"
+        onerror="this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23eef1f5%22/%3E%3Ccircle cx=%2250%22 cy=%2238%22 r=%2218%22 fill=%22%23b9c2cf%22/%3E%3Cpath d=%22M18 92c4-18 16-26 32-26s28 8 32 26z%22 fill=%22%23b9c2cf%22/%3E%3C/svg%3E'">
+      <div class="id">
+        <h1>Mario Qosja</h1>
+        <div class="title">Scientific Researcher &middot; Dr.-Ing. (magna cum laude)</div>
+        <div class="affiliation">
+          <span>Munich University of Applied Sciences</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#education">Education</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#skills">Skills</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I am a scientific researcher with a doctorate in Computer Science (Dr.-Ing., magna cum laude)
+        specialised in real-time, safety-critical embedded systems. My work is driven by two passions:
+        making embedded software provably reliable, and bringing modern AI into rigorous engineering
+        practice. Today I research the formal verification of C++ with large language models and
+        agentic coding assistants, and I enjoy building fully local, confidential AI tooling for
+        sensitive codebases. From time-triggered organic computing for autonomous driving to
+        deep-learning accelerators, the goal is the same: dependable systems that behave correctly
+        in the real world.
+      </p>
+    </section>
+
+    <!-- Research Interests -->
+    <section id="research">
+      <h2>Research Interests</h2>
+      <ul class="interests">
+        <li>Formal Verification of C++</li>
+        <li>LLMs &amp; Agentic AI for Code</li>
+        <li>Real-Time Embedded Systems</li>
+        <li>Time-Triggered Organic Computing</li>
+        <li>Deep-Learning Accelerators</li>
+        <li>Local / Confidential AI Tooling</li>
+      </ul>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <ol class="publications">
+        <li class="pub">
+          <div class="authors"><strong>M. Qosja</strong>, U. Raj, S. Meckel, and R. Obermaisser</div>
+          <div><span class="paper-title">Dynamic TSN Reconfiguration for Time-Triggered Organic Computing</span>
+            <span class="tag">2025</span></div>
+          <div class="venue"><em>Procedia Computer Science</em>, vol.&nbsp;257, pp.&nbsp;364&ndash;373, 2025.</div>
+        </li>
+        <li class="pub">
+          <div class="authors"><strong>M. Qosja</strong>, S. Meckel, and R. Obermaisser</div>
+          <div><span class="paper-title">Discrete-Event Co-Simulation Interface for Time-Triggered Organic Computing</span>
+            <span class="tag">2024</span></div>
+          <div class="venue">12th IEEE International Conference on Intelligent Systems, Varna, Bulgaria.</div>
+        </li>
+        <li class="pub">
+          <div class="authors"><strong>M. Qosja</strong>, S. Meckel, and R. Obermaisser</div>
+          <div><span class="paper-title">Time-Triggered Organic Computing Architecture for Autonomous Driving Vehicles Using List Scheduling</span>
+            <span class="tag">2024</span></div>
+          <div class="venue">Automotive meets Electronics and Control (AmEC), Dortmund, Germany.</div>
+        </li>
+        <li class="pub">
+          <div class="authors"><strong>M. Qosja</strong>, S. Meckel, and R. Obermaisser</div>
+          <div><span class="paper-title">Simulator for Time-Triggered Organic Computing</span>
+            <span class="tag">2022</span></div>
+          <div class="venue">Proc. of the 14th International Conference on Ambient Systems, Networks and Technologies (ANT), Leuven, Belgium.</div>
+        </li>
+        <li class="pub">
+          <div class="authors">S. Majidi, R. Obermaisser, S. Wasala, and <strong>M. Qosja</strong></div>
+          <div><span class="paper-title">Fault-Tolerant Scheduler with Genetic Algorithm for Safety-Critical Time-Triggered Systems of Systems</span>
+            <span class="tag">2020</span></div>
+          <div class="venue">Proc. of the 18th IEEE International Conference on Industrial Informatics (INDIN), Coventry, UK.</div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="edu-entry">
+        <div class="edu-title">Doctor of Engineering (Dr.-Ing.) in Computer Science</div>
+        <div class="edu-meta">2022 &ndash; 2026 &middot; University of Siegen &middot; Supervised by Prof. Dr. Roman Obermaisser &middot; Magna Cum Laude</div>
+        <p style="margin-top:6px; font-size:0.93rem;">PhD Thesis: <em>Time-Triggered Organic Computing</em></p>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-title">Master of Science in Computer Science</div>
+        <div class="edu-meta">2018 &ndash; 2021 &middot; University of Siegen &middot; GPA 1.8</div>
+        <p style="margin-top:6px; font-size:0.93rem;">Master Thesis: <em>Design and Implementation of a Time-Triggered Hardware Accelerator for Dependable Neural Networks</em></p>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-title">Bachelor of Science in Electronic and Digital Communications Engineering</div>
+        <div class="edu-meta">2015 &ndash; 2018 &middot; Epoka University, Tirana</div>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <table class="courses">
+        <thead>
+          <tr><th>Term</th><th>Course</th><th>Role</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="year">WS 2025/26</td>
+            <td>Program Verification (Exercises)</td>
+            <td>Part-time Lecturer</td>
+          </tr>
+          <tr>
+            <td class="year">WS 2026/27</td>
+            <td>Program Verification (Exercises)</td>
+            <td>Part-time Lecturer</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills-grid">
+        <dt>Core</dt>
+        <dd>Real-Time &amp; Embedded Systems &middot; Distributed Systems &middot; Formal Methods for Embedded Software</dd>
+        <dt>AI</dt>
+        <dd>Large Language Models &middot; Agentic AI / Open-Source AI Coding Agents &middot; Local LLM Inference (Ollama, Open WebUI)</dd>
+        <dt>Static Analysis</dt>
+        <dd>Frama-C and similar tools</dd>
+        <dt>Programming</dt>
+        <dd>C/C++, SystemC, HLS C++, Python</dd>
+        <dt>Networks</dt>
+        <dd>Ethernet, Time-Sensitive Networking (TSN), TCP/IP &amp; UDP, OMNeT++</dd>
+        <dt>DL Compilers</dt>
+        <dd>Apache TVM, Xilinx VITIS AI</dd>
+        <dt>DL Accelerators</dt>
+        <dd>Apache VTA, Xilinx DPU, GPU &amp; CPU</dd>
+        <dt>Tooling</dt>
+        <dd>Git, CMake, Docker</dd>
+      </dl>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+      <h2>CV</h2>
+      <p><a class="cv-link" href="cv.pdf" download>&darr; Download CV (PDF)</a></p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><span class="label">Email</span> <a href="mailto:marioqosja97@gmail.com">marioqosja97@gmail.com</a></li>
+        <li><span class="label">LinkedIn</span> <a href="https://de.linkedin.com/in/mario-qosja-4725451a2">linkedin.com/in/mario-qosja-4725451a2</a></li>
+        <li><span class="label">GitHub</span> <a href="https://github.com/qosmar">github.com/qosmar</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      &copy; 2026 Mario Qosja &middot; Last updated November 2026
+    </div>
+  </footer>
+
+</body>
+</html>

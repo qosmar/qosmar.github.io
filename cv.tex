@@ -1,0 +1,150 @@
+%% ============================================================
+%%  CV – Mario Qosja
+%%  Compile with: pdflatex main.tex   (or upload to Overleaf)
+%%  Only standard packages are used.
+%% ============================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.8cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,urlcolor=accent,linkcolor=accent]{hyperref}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------- Colours (change here) ----------
+% Pick ONE accent by uncommenting it; body text stays near-black.
+\definecolor{accent}{HTML}{1F3A5F}   % navy (default)
+%\definecolor{accent}{HTML}{2F5D50} % forest green
+%\definecolor{accent}{HTML}{7A1F2B} % burgundy
+%\definecolor{accent}{HTML}{333333} % graphite (almost monochrome)
+\definecolor{textcol}{HTML}{1A1A1A}
+\definecolor{rulecol}{HTML}{B8C2CC}
+\color{textcol}
+
+% ---------- Section style ----------
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}
+
+% ---------- Bullet lists ----------
+\setlist[itemize]{leftmargin=1.2em,itemsep=2pt,topsep=3pt,parsep=0pt}
+
+% ---------- Reusable macros ----------
+% \cventry{Organisation}{Dates}{Role / subtitle}{Description}
+\newcommand{\cventry}[4]{%
+  \textbf{#1}\hfill\textbf{#2}\par
+  \ifx&#3&\else\textit{#3}\par\fi
+  \ifx&#4&\else\vspace{2pt}#4\par\fi
+}
+% \eduentry{Degree}{Years}{Institution}
+\newcommand{\eduentry}[3]{%
+  \textbf{#1}\hfill\textbf{#2}\par
+  #3\par
+}
+% \skillrow{Label}{Content}
+\newcommand{\skillrow}[2]{\textbf{#1:} #2\par\vspace{2pt}}
+
+\begin{document}
+
+%% ---------------- HEADER ----------------
+\begin{center}
+  {\Huge\bfseries Mario Qosja}\\[4pt]
+  %{\large\color{accent} Embedded Software Engineer $|$ AI/ML \& LLM Systems}\\[6pt]
+  \href{mailto:marioqosja97@gmail.com}{marioqosja97@gmail.com}
+  \quad$\cdot$\quad
+  \href{https://de.linkedin.com/in/mario-qosja-4725451a2}{linkedin.com/in/mario-qosja-4725451a2}
+\end{center}
+
+%% ---------------- SUMMARY ----------------
+\section{Profile}
+I am a scientific researcher with a doctorate degree in Computer Science (Dr.-Ing., magna cum laude) specialised in real-time, safety-critical embedded systems. My work is driven by two passions: making embedded software provably reliable, and bringing modern AI into rigorous engineering practice. Today I research the formal verification of C++ with large language models and agentic coding assistants, and I enjoy building fully local, confidential AI tooling for sensitive codebases. From time-triggered organic computing for autonomous driving to deep-learning accelerators, the goal is the same: dependable systems that behave correctly in the real world. 
+%% ---------------- EXPERIENCE ----------------
+\section{Professional Experience}
+
+\cventry{Munich University of Applied Sciences}{Apr 2025 -- Present}{}{%
+Working on formal methods for embedded systems to ensure the reliable, correct, and safe execution of software for safety-critical systems, many of which are written in C++. The research project, conducted with industry partner Validas AG, adapts and extends a previously demonstrated method for source code verification in C++, evaluating generative large language models and other AI methods alongside constraint-programming-based approaches.
+\begin{itemize}
+  \item Designed and evaluated an LLM-based pipeline for automated generation of formal code specifications, benchmarking multiple open-weight language models to compare accuracy, consistency, and failure modes across different model architectures and sizes.
+  \item Developed an AI-agent-driven pipeline for the automatic generation of GoogleTest unit tests for C++ code, leveraging agentic workflows to produce, compile, and validate executable test suites.
+  \item Built and deployed a fully local LLM inference stack using Ollama and Open WebUI, enabling confidential, on-premises model serving for sensitive research and codebases without reliance on external APIs.
+  \item Integrated an agentic AI coding assistant (OpenCode) into the local development environment, enabling autonomous multi-step code generation and iteration workflows backed by self-hosted LLM inference.
+  \item Part-time lecturer for the exercises of the \textit{Program Verification} course (Winter Semesters 2025/26 and 2026/27).
+\end{itemize}}
+
+\vspace{0.6em}
+\cventry{University of Siegen}{Jan 2022 -- Feb 2025}{}{%
+Research assistant developing a Time-Triggered Organic Computing (TTOC) architecture to make distributed embedded systems for autonomous driving more adaptive, safe, and fault-tolerant, combining Organic Computing concepts (artificial DNA and an artificial hormone system) with the determinism and dependability of time-triggered communication networks (e.g., TSN, TTEthernet).
+\begin{itemize}
+  \item Designed a hormone-based self-organization mechanism enabling computing nodes to perform spatial allocation of application tasks, followed by a custom list-scheduling algorithm computing dynamic temporal schedules for tasks and messages.
+  \item Created a discrete-event simulation in SystemC in which the computing nodes were modeled, along with the hormone-based self-organization mechanism and the list-scheduling algorithm for spatial task allocation and dynamic temporal scheduling.
+  \item Developed a reconfiguration mechanism that detects node failures, halts affected tasks, recomputes the application graph, and re-triggers hormone-based reallocation to restore the system to a safe, fully scheduled state while providing fail-operational protection for an automated steering function.
+  \item Implemented the reconfiguration mechanism in an OMNeT++ network simulation of TSN, creating a new \texttt{Reconfiguration} module that dynamically loads new schedules into TSN nodes and switches.
+  \item Built a co-simulation environment coupling network and computation simulators to validate the architecture, demonstrating improved temporal predictability and fault containment across use cases.
+  
+  \end{itemize}}
+
+\vspace{0.6em}
+\cventry{ESKITEC GmbH -- SEPIA EXIST}{Oct 2020 -- Dec 2021}{}{%
+Joined the SEPIA startup project as a student research assistant, investigating the deep learning compiler landscape of the time and evaluating Apache TVM and its VTA hardware accelerator alongside Xilinx VITIS-AI for deploying and accelerating neural network inference on Xilinx FPGA boards. Completed the Master's thesis within this role, combining time-triggered communication with the VTA hardware accelerator.
+\begin{itemize}
+  \item Performed inference of multiple deep learning models across target devices (CPU, GPU, VTA, Xilinx DPU) using both the Apache TVM and Xilinx VITIS-AI compiler toolchains, comparing deployment workflows and hardware-acceleration characteristics on Xilinx boards.
+  \item Designed and implemented a time-triggered hardware accelerator by integrating time-triggered communication concepts with the VTA accelerator, forming the basis of the Master's thesis on dependable neural network execution.
+\end{itemize}}
+
+%% ---------------- EDUCATION ----------------
+\section{Education}
+
+\eduentry{Doctoral Degree (Dr.-Ing.) in Computer Science}{2022 -- 2026}{University of Siegen --- Supervised by Prof.\ Dr.\ Roman Obermaisser}
+\begin{itemize}
+  \item Grade: Magna Cum Laude
+  \item PhD Thesis: Time-Triggered Organic Computing
+\end{itemize}
+
+\vspace{0.4em}
+\eduentry{Master of Science in Computer Science}{2018 -- 2021}{University of Siegen}
+\begin{itemize}
+  \item GPA: 1.8
+  \item Master Thesis: Design and implementation of a time-triggered hardware accelerator for dependable neural networks
+\end{itemize}
+
+\vspace{0.4em}
+\eduentry{Bachelor of Science in Electronic and Digital Communications Engineering}{2015 -- 2018}{Epoka University, Tirana}
+
+%% ---------------- PUBLICATIONS ----------------
+\section{Publications}
+\begin{itemize}[itemsep=4pt]
+  \item \textbf{M. Qosja}, U. Raj, S. Meckel, and R. Obermaisser, ``Dynamic TSN Reconfiguration for Time-Triggered Organic Computing'', \textit{Procedia Computer Science}, vol.\ 257, pp.\ 364--373, 2025.
+  \item \textbf{M. Qosja}, S. Meckel and R. Obermaisser (2024), ``Discrete-Event Co-Simulation Interface for Time-Triggered Organic Computing'', \textit{12th IEEE International Conference on Intelligent Systems}, Varna, Bulgaria.
+  \item \textbf{M. Qosja}, S. Meckel and R. Obermaisser (2024), ``Time-Triggered Organic Computing Architecture for Autonomous Driving Vehicles Using List Scheduling'', \textit{Automotive meets Electronics and Control (AmEC)}, Dortmund, Germany.
+  \item \textbf{M. Qosja}, S. Meckel and R. Obermaisser (2022), ``Simulator for Time-Triggered Organic Computing'', In \textit{Proc.\ of the 14th International Conference on Ambient Systems, Networks and Technologies (ANT)}, Leuven, Belgium.
+  \item S. Majidi, R. Obermaisser, S. Wasala and \textbf{M. Qosja} (2020), ``Fault-Tolerant Scheduler with Genetic Algorithm for Safety-Critical Time-Triggered Systems of Systems'', In \textit{Proc.\ of the 18th IEEE International Conference on Industrial Informatics (INDIN)}, Coventry, UK.
+\end{itemize}
+
+%% ---------------- SKILLS ----------------
+\section{Skills}
+\skillrow{Core}{Real-Time \& Embedded Systems $\cdot$ Distributed Systems $\cdot$ Formal Methods for Embedded Software}
+\skillrow{AI}{Large Language Models $\cdot$ Agentic AI / Open-Source AI Coding Agents $\cdot$ Local LLM Inference (Ollama, Open WebUI)}
+\skillrow{Static analysis}{Frama-C and similar tools}
+\skillrow{Programming}{C/C++, SystemC, HLS C++, Python}
+\skillrow{Networks}{Ethernet, Time-Sensitive Networking, TCP/IP \& UDP, OMNeT++}
+\skillrow{DL compilers}{Apache TVM, Xilinx VITIS AI}
+\skillrow{DL accelerators}{Apache VTA, Xilinx DPU, GPU \& CPU}
+\skillrow{Tooling}{Git, CMake, Docker}
+
+%% ---------------- LANGUAGES ----------------
+\section{Languages}
+\textbf{Albanian:} Native \quad\textbf{English:} Advanced (C1) \quad\textbf{Italian:} Advanced (B2) \quad\textbf{German:} Intermediate (B1)
+
+%% ---------------- REFERENCES ----------------
+\section{References}
+Prof.\ Dr.\ Matthias Güdemann --- \href{mailto:matthias.guedemann@hm.edu}{matthias.guedemann@hm.edu}\par
+Prof.\ Dr.\ Roman Obermaisser --- \href{mailto:roman.obermaisser@uni-siegen.de}{roman.obermaisser@uni-siegen.de}\par
+Dr.\ Endri Stoja --- \href{mailto:endri33@gmail.com}{endri33@gmail.com}
+
+\end{document}
